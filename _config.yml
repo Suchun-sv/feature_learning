@@ -1,0 +1,6 @@
+source: ./build
+root: ./build
+deploy:
+    type: git
+    respository: git@github.com:Suchun-sv/feature_learning.git
+    branch: master
