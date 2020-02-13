@@ -16,7 +16,7 @@ module.exports = {
         headHtml: "", //html head 的代码
         footHtml: "", //html 底部 的代码
         isMinify: true, //是否为输出的html启用压缩
-        rootPath: "C:/01/docs/build/" //表示根路径，如果部署在深目录下面，这个配置项必填，不然会出现找不到资源路径的错误。
+        rootPath: "/feature_learning/" //表示根路径，如果部署在深目录下面，这个配置项必填，不然会出现找不到资源路径的错误。
     },
     nav: {
         tree: "./tree"
