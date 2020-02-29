@@ -3,10 +3,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>菜单配置文件说明 - 特征工程</title>
+    <title>KMP - 特征工程</title>
     
-        <meta name="description" content="菜单的配置文件是你文档根目录下面的 tree.md 文件，它采用了markdown语法来进行书写。">
-        <meta name="keywords" content="菜单配置文件说明 - 特征工程"></head><body>", 
+        <meta name="description" content>
+        <meta name="keywords" content="KMP - 特征工程"></head><body>", 
         
     <script src="/feature_learning/static/js/jquery-3.3.1.min.js"></script>
     <script src="/feature_learning/static/js/vue.min.js"></script>
@@ -40,17 +40,17 @@
             </div>
             <ul class="tea-menu-list">
 <li><a href="/feature_learning/index.html" title="介绍">介绍</a></li>
-<li><a title><i class="fa fa-angle-down"></i></a><ul>
-<li><a title="字符串">字符串<i class="fa fa-angle-down"></i></a><ul>
-<li><a href="/feature_learning/string/KMP.html" title="KMP">KMP</a></li>
+<li><a title class="active"><i class="fa fa-angle-down unfold"></i></a><ul class="unfold">
+<li><a title="字符串" class="active">字符串<i class="fa fa-angle-down unfold"></i></a><ul class="unfold">
+<li><a href="/feature_learning/string/KMP.html" title="KMP" class="active">KMP</a></li>
 </ul></li>
 </ul></li>
 <li><a href="/feature_learning/quick_start.html" title="快速入门">快速入门</a></li>
 <li><a href="/feature_learning/install.html" title="安装">安装</a></li>
-<li><a title="配置介绍" class="active">配置介绍<i class="fa fa-angle-down unfold"></i></a><ul class="unfold">
+<li><a title="配置介绍">配置介绍<i class="fa fa-angle-down unfold"></i></a><ul class="unfold">
 <li><a href="/feature_learning/config/structure.html" title="文档目录结构介绍">文档目录结构介绍</a></li>
 <li><a href="/feature_learning/config/main.html" title="主配置文件说明">主配置文件说明</a></li>
-<li><a href="/feature_learning/config/nav.html" title="菜单配置文件说明" class="active">菜单配置文件说明</a></li>
+<li><a href="/feature_learning/config/nav.html" title="菜单配置文件说明">菜单配置文件说明</a></li>
 </ul></li>
 <li><a href="/feature_learning/template_markdown.html" title="markdown模版">markdown模版</a></li>
 <li><a href="/feature_learning/custom_theme.html" title="自定义主题">自定义主题</a></li>
@@ -66,7 +66,7 @@
             <div class="tea-nav">
                 <h3 class="top-title" style="font-weight: 500; margin: 0px;font-size: 16px">
                     <i class="fa fa-navicon" aria-hidden="true"></i>
-                    <span>菜单配置文件说明</span>
+                    <span>KMP</span>
                 </h3>
                 <!-- article meta: author、date、updated -->
                 <div class="article-meta">
@@ -78,50 +78,62 @@
             <div class="tea-container">
                 <article class="markdown-body">
                     
-        <h1 id="菜单配置文件说明">
-            <a href="#菜单配置文件说明" class="header-anchor">#</a>
-            <span>菜单配置文件说明</span>
+        <h1 id="KMP">
+            <a href="#KMP" class="header-anchor">#</a>
+            <span>KMP</span>
         </h1>
-    <p>菜单的配置文件是你文档根目录下面的 <code>tree.md</code> 文件，它采用了markdown语法来进行书写。</p>
+    <pre class="prettyprint language-c++"><code>#include&lt;stdio.h&gt;
+#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int M = 1000000+5;
+char S[M];
+char T[M];
+int fail[M];
+int m,n;
+int main()
+{
+#ifdef debug
+freopen("C:\\Users\\X1 Yoga\\Desktop\\in.txt","r",stdin);
+//freopen("C:\\Users\\X1 Yoga\\Desktop\\out1.txt","w",stdout);
+#endif
+    scanf("%s%s", S+1, T+1);
+    n = strlen(S+1), m = strlen(T+1);
 
-        <h2 id="菜单结构">
-            <a href="#菜单结构" class="header-anchor">#</a>
-            <span>菜单结构</span>
-        </h2>
-    <p>例如，本文档的菜单结构如下：</p>
-<pre class="prettyprint language-markdown"><code>- [介绍](/index)
-- [快速入门](/quick_start)
-- [安装](/install)
-- +配置介绍
-    - [文档目录结构介绍](/config/structure)
-    - [主配置文件说明](/config/main)
-    - [菜单配置文件说明](/config/nav)
-- [markdown模版](/template_markdown)
-- [自定义主题](/custom_theme)
-- [部署](/deploy)</code></pre>
-        <h3 id="符号介绍">
-            <a href="#符号介绍" class="header-anchor">#</a>
-            <span>符号介绍</span>
-        </h3>
-    <p>语法完全使用markdown里的无序列表定义语法，但是要特别注意以下几点：</p>
-<ul>
-<li><code>[]</code> 里的内容表示菜单的标题，如果不写<code>[]</code>则代表这个菜单没有链接仅作为一个菜单名称。</li>
-<li><code>()</code> 里的内容表示菜单的markdown文件的地址，<code>并且也代表了生成后的html文件url。</code></li>
-<li><code>+</code> 代表了在生成的html里默认展开这个菜单，需要注意的是，这不是markdown的语法，这是teadocs的规定，<code>+</code>一定要写在文本的前面，而不是<code>[</code>的前面。</li>
-</ul>
-
+    // 构造fail数组 
+    for(int i=2;i&lt;=m;i++)
+    {
+        int j = fail[i-1];
+        while(T[i]!=T[j+1]&&j) j = fail[j];
+        if(T[i]==T[j+1]) j++;
+        fail[i]=j;
+    }
+    // 开始匹配 
+    int p=0;
+    for(int i=1;i&lt;=n;i++)
+    {
+        // 若不匹配，往后移动 
+        while(S[i]!=T[p+1]&&p) p =fail[p];
+        if(S[i]==T[p+1]) p++;
+        if(p==m)
+        {
+            printf("%d\n",i-m+1);
+            p=fail[p];
+        }
+    }
+    for(int i=1;i&lt;=m;i++) printf("%d ", fail[i]);
+}</code></pre>
                 </article>
                 <!-- turn page -->
                 <div class="page">
                     
-                         <a class="page-prev" href="/feature_learning/config/main.html">
+                         <a class="page-prev" href="/feature_learning/index.html">
                             <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                            主配置文件说明
+                            介绍
                         </a>
                      
                     
-                        <a class="page-next" href="/feature_learning/template_markdown.html">
-                            markdown模版
+                        <a class="page-next" href="/feature_learning/quick_start.html">
+                            快速入门
                             <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         </a>
                      
@@ -130,16 +142,8 @@
                 <!-- article catalog -->
                 <div class="toc">
                     <ul class="toc-affix">
-                <li class="toc-item text-elli" style="padding-left: 15px" data-link="菜单配置文件说明">
-                    <a href="#菜单配置文件说明" title="菜单配置文件说明">菜单配置文件说明</a>
-                </li>
-            
-                <li class="toc-item text-elli" style="padding-left: 30px" data-link="菜单结构">
-                    <a href="#菜单结构" title="菜单结构">菜单结构</a>
-                </li>
-            
-                <li class="toc-item text-elli" style="padding-left: 45px" data-link="符号介绍">
-                    <a href="#符号介绍" title="符号介绍">符号介绍</a>
+                <li class="toc-item text-elli" style="padding-left: 15px" data-link="KMP">
+                    <a href="#KMP" title="KMP">KMP</a>
                 </li>
             </ul>
                 </div>
